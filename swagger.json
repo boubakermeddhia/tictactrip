@@ -9,7 +9,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "https://tic-tac-trip.herokuapp.com",
+  "host": "tic-tac-trip.herokuapp.com",
   "basePath": "/api",
   "tags": [
     {
