@@ -1,0 +1,145 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Node.js Justify Application API",
+    "description": "Node.js Justify Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "Create users"
+    },
+    {
+      "name": "Token",
+      "description": "Obtains Token of registred users"
+    },
+    {
+      "name": "Justify",
+      "description": "Justify Text"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json",
+    "text/plain"
+    
+  ],
+  "produces": [
+    "application/json",
+    "text/plain"
+  ],
+  "paths": {
+
+    "/add": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Create new user",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+         
+        }
+      }
+    },
+
+    "/token": {
+      "parameters": [
+        {
+          "name": "email",
+          "in": "body",
+          "required": true,
+          "description": "Token of user",
+          "type": "string",
+          "schema": {
+            "$ref": "#/definitions/User"
+          }
+        }
+      ],
+      "post": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Get user Token",
+        "responses": {
+        
+        }
+      }
+    },
+
+    "/justify": {
+      "parameters": [
+        {
+          "name": "Text",
+          "in": "body",
+          "required": true,
+          "description": "Text to justify",
+          "type": "string"
+        }
+      ], 
+      "consumes": [
+        "text/plain"
+      ],
+       "produces": [
+        "text/plain"
+      ],
+      "post": {
+        "tags": [
+          "Justify"
+        ],
+        "security": [
+          {
+             "Bearer": []
+          }
+       ],
+        "summary": "Get Text justified",
+        
+        "responses": {
+        
+        }
+      }
+    }
+
+  },
+  "definitions": {
+    "User": {
+      "required": [
+        "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        }
+      }
+    }
+  },
+  "securityDefinitions":{
+    "Bearer":{
+      "type": "apiKey",
+      "name": "authorization",
+      "in": "header"
+    }
+  }
+}
