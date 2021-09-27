@@ -31,7 +31,6 @@ const justify=(req,res,user,text)=> {
             }
         }
     }
-    console.log(user)
 
     res.send(space(newtext))
 }
