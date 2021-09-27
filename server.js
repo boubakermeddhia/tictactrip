@@ -4,11 +4,13 @@ const mongoose=require('mongoose')
 const routerapi=require('./routes/justify/justify')
 const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('./swagger.json')
+const cors=require('cors')
+
 
 
 const app=express()
 
-
+app.use(cors())
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(bodyparser.json())
 app.use(bodyparser.text())
